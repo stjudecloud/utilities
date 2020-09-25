@@ -1,0 +1,5 @@
+excluded_words:
+  - DNAnexus
+  - SemVer 
+  - stjude
+  - fids
