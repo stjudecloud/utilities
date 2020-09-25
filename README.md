@@ -16,6 +16,8 @@
 The repository is laid out as follows:
 
 * `scripts` - A collection of utility scripts to be used with St. Jude Cloud genomics platform.
+  * `deduplicate.py` - A utility script to deduplicate St. Jude Cloud file names. Assumes files are annotated with St. Jude project names. Retains files based on the `PRIORITIES` list of prioritized projects.
+    * Usage: `dx ls /counts | python3 deduplicate.py | bash`
 
 ## Author
 
