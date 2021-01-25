@@ -3,3 +3,7 @@ excluded_words:
   - SemVer 
   - stjude
   - fids
+  - gtf
+  - itertools
+  - contig
+  - unsubscriptable-object
