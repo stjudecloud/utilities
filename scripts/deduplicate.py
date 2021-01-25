@@ -10,7 +10,7 @@ store = defaultdict(list)
 
 LOG = False
 BAD_FILES_FOLDER = "/.bad-files/"
-PRIORITIES = ['Clinical Pilot', 'Pediatric Cancer Genome Project (PCGP)', 'Childhood Solid Tumor Network (CSTN)']
+PRIORITIES = ['Clinical Pilot', 'Pediatric Cancer Genome Project (PCGP)', 'Childhood Solid Tumor Network (CSTN)', 'Pan-Acute Lymphoblastic Leukemia (PanALL)']
 
 def simple_log(msg: str = ""):
     if LOG:
