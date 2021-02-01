@@ -7,3 +7,5 @@ excluded_words:
   - itertools
   - contig
   - unsubscriptable-object
+  - Gencode
+  - gencode
