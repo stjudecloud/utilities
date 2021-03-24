@@ -1,4 +1,4 @@
-#!/usr/bin/env python3 
+#!/usr/bin/env python3
 
 import json
 import sys
@@ -9,8 +9,16 @@ from collections import defaultdict
 store = defaultdict(list)
 
 LOG = False
-BAD_FILES_FOLDER = "/.bad-files/"
-PRIORITIES = ['Clinical Pilot', 'Pediatric Cancer Genome Project (PCGP)', 'Childhood Solid Tumor Network (CSTN)', 'Pan-Acute Lymphoblastic Leukemia (PanALL)']
+BAD_FILES_FOLDER = "/bad-files/"
+PRIORITIES = [
+    "Clinical Pilot",
+    "Pediatric Cancer Genome Project (PCGP)",
+    "Real Time Clinical Genomics (RTCG)",
+    "Genomes 4 Kids (G4K)",
+    "Childhood Solid Tumor Network (CSTN)",
+    "Pan-Acute Lymphoblastic Leukemia (PanALL)",
+]
+
 
 def simple_log(msg: str = ""):
     if LOG:
@@ -26,7 +34,9 @@ def simple_error(msg: str, suggest_contact: bool = True):
     sys.exit(1)
 
 
-def get_best_file(fn: str, file_ids: List[str], priority_list: List[str] = PRIORITIES) -> str:
+def get_best_file(
+    fn: str, file_ids: List[str], priority_list: List[str] = PRIORITIES
+) -> str:
     """Gets the best file given the dataset priorities given in priorities
 
     Args:
@@ -45,37 +55,41 @@ def get_best_file(fn: str, file_ids: List[str], priority_list: List[str] = PRIOR
         full_describe = check_output(f"dx describe {fid} --json", shell=True)
         datasets = json.loads(full_describe).get("properties", {}).get("sj_datasets")
         if not datasets:
-            raise RuntimeError(f"File {fid} doesn't have the correct properties annotated! " + \
-                                "Did you get this file from St. Jude Cloud? If so, please " + \
-                                "contact us with this error at support@stjude.cloud.", suggest_contact=False)
+            raise RuntimeError(
+                f"File {fid} doesn't have the correct properties annotated! "
+                + "Did you get this file from St. Jude Cloud? If so, please "
+                + "contact us with this error at support@stjude.cloud.",
+                suggest_contact=False,
+            )
 
-        
         file_id_to_datasets[fid] = set([e.strip() for e in datasets.split(",")])
 
     # first, ensure every file belongs to *at least* one dataset above.
     # if any file belongs to a new dataset, then out of an abundance of
-    # caution, we will error and ask the user to explicitly add that 
+    # caution, we will error and ask the user to explicitly add that
     # dataset to the priority_list list.
 
     for file_id, datasets in file_id_to_datasets.items():
         if not any([dataset in priority_list for dataset in datasets]):
-            simple_error(f"File {fid} doesn't contain a dataset tag in the known priority " + \
-                                "list. This likely means that a new dataset has been released " + \
-                                "to St. Jude Cloud since this script was written. Out of an " + \
-                                "abundance of caution, we ask that you explicitly " + \
-                                "update the PRIORITIES variable at the top of this script to " + \
-                                f"include one of the following values: {datasets}. " + \
-                                "\n\nWe would also appreciate it if you reached out to us at " + \
-                                "support@stjude.cloud with this error so we can fix it for future "+ \
-                                "users.", suggest_contact=False)
-
+            simple_error(
+                f"File {fid} doesn't contain a dataset tag in the known priority "
+                + "list. This likely means that a new dataset has been released "
+                + "to St. Jude Cloud since this script was written. Out of an "
+                + "abundance of caution, we ask that you explicitly "
+                + "update the PRIORITIES variable at the top of this script to "
+                + f"include one of the following values: {datasets}. "
+                + "\n\nWe would also appreciate it if you reached out to us at "
+                + "support@stjude.cloud with this error so we can fix it for future "
+                + "users.",
+                suggest_contact=False,
+            )
 
     simple_log()
     simple_log(f"== {fn} ==")
 
     hooked_file = None
     for candidate_dataset in priority_list:
-        simple_log(f"  [*] Looking for dataset \"{candidate_dataset}\".")
+        simple_log(f'  [*] Looking for dataset "{candidate_dataset}".')
         for file_id, actual_datasets in file_id_to_datasets.items():
             contains = any([e == candidate_dataset for e in actual_datasets])
             simple_log(f"    - {file_id} => {actual_datasets} (contains: {contains})")
@@ -86,15 +100,19 @@ def get_best_file(fn: str, file_ids: List[str], priority_list: List[str] = PRIOR
                     # a file that was attached to this dataset already existed, and now we've found
                     # a second one. I don't expect this to ever happen in practice (two files in the
                     # same dataset with the same name), so if it does, we should email support@stjude.cloud
-                    simple_error(f"More than one file id had the same dataset and same name: {file_id_to_datasets}." + \
-                                    "This is unexpected.")
+                    simple_error(
+                        f"More than one file id had the same dataset and same name: {file_id_to_datasets}."
+                        + "This is unexpected."
+                    )
 
         if hooked_file:
             simple_log(f"    - Found file in {candidate_dataset}: {hooked_file}.")
             break
 
     if not hooked_file:
-        raise simple_error(f"No files with datasets in the priority list were found: {file_id_to_datasets}.")
+        raise simple_error(
+            f"No files with datasets in the priority list were found: {file_id_to_datasets}."
+        )
 
     return hooked_file
 
