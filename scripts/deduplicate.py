@@ -17,6 +17,10 @@ PRIORITIES = [
     "Genomes 4 Kids (G4K)",
     "Childhood Solid Tumor Network (CSTN)",
     "Pan-Acute Lymphoblastic Leukemia (PanALL)",
+    "Pediatric Therapy-related Myeloid Neoplasms (tMN)",
+    "Pediatric Brain Tumor Program (PBTP)",
+    "Pediatric Acute Myeloid Leukemia (PedAML)",
+    "Genomics and transcriptomics of relapsed pediatric AML (RPAML)",
 ]
 
 
@@ -62,7 +66,7 @@ def get_best_file(
                 suggest_contact=False,
             )
 
-        file_id_to_datasets[fid] = set([e.strip() for e in datasets.split(",")])
+        file_id_to_datasets[fid] = set([e.strip() for e in datasets.split(";")])
 
     # first, ensure every file belongs to *at least* one dataset above.
     # if any file belongs to a new dataset, then out of an abundance of
