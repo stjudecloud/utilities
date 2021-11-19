@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 import json
 import sys
 from typing import List
@@ -121,8 +122,15 @@ def get_best_file(
     return hooked_file
 
 
-if __name__ == "__main__":
-    for line in [l.strip() for l in sys.stdin]:
+def main():
+    parser = argparse.ArgumentParser(
+        description="Deduplicates samples in DNAnexus based on the project priority " + \
+             "the St. Jude Cloud team uses."
+    )
+    parser.add_argument("dxids", nargs="+", type=str, help="DNAnexus file ids to deduplicate")
+    args = parser.parse_args()
+
+    for line in [l.strip() for l in args.dxids]:
         if ":" not in line:
             continue
 
@@ -135,3 +143,6 @@ if __name__ == "__main__":
         files_to_remove = fids.copy()
         files_to_remove.remove(best_file_id)
         print(f"dx mv {' '.join(list(files_to_remove))} {BAD_FILES_FOLDER}")
+
+if __name__ == "__main__":
+    main()
