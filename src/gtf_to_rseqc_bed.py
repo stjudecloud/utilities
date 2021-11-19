@@ -20,8 +20,10 @@ class Tx:
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("gtf", help="GTF to convert to RSeQC bed12 format")
+    parser = argparse.ArgumentParser(
+        description="Converts a GTF file to an RSeQC bed12 format."
+    )
+    parser.add_argument("gtf", help="GTF to convert")
     args = parser.parse_args()
 
     filename = args.gtf

@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "stjudecloud-utilities"
+version = "1.0.0"
+description = "A set of utilities used on the St. Jude Cloud project."
+authors = ["St. Jude Cloud <support@stjude.cloud>"]
+license = "MIT"
+packages = [
+    { include = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.scripts]
+deduplicate-samples = 'src.deduplicate_samples:main'
+gtf-to-rseqc-bed = "src.gtf_to_rseqc_bed:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
