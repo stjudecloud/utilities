@@ -5,7 +5,7 @@ description = "A set of utilities used on the St. Jude Cloud project."
 authors = ["St. Jude Cloud <support@stjude.cloud>"]
 license = "MIT"
 packages = [
-    { include = "stjudecloud-utilities" },
+    { include = "stjudecloud_utilities" },
 ]
 
 
@@ -17,9 +17,9 @@ pdoc3 = "^0.10.0"
 python-semantic-release = "^7.19.2"
 
 [tool.poetry.scripts]
-deduplicate-feature-counts = "stjudecloud-utilities.deduplicate_feature_counts:main"
-gtf-to-rseqc-bed = "stjudecloud-utilities.gtf_to_rseqc_bed:main"
-warden-counts-utils = "stjudecloud-utilities.warden_counts_utils:main"
+deduplicate-feature-counts = "stjudecloud_utilities.deduplicate_feature_counts:main"
+gtf-to-rseqc-bed = "stjudecloud_utilities.gtf_to_rseqc_bed:main"
+warden-counts-utils = "stjudecloud_utilities.warden_counts_utils:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
