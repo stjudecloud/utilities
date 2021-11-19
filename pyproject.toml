@@ -5,7 +5,7 @@ description = "A set of utilities used on the St. Jude Cloud project."
 authors = ["St. Jude Cloud <support@stjude.cloud>"]
 license = "MIT"
 packages = [
-    { include = "src" },
+    { include = "stjudecloud-utilities" },
 ]
 
 [tool.poetry.dependencies]

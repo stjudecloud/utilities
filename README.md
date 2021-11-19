@@ -18,7 +18,7 @@ A utility script to deduplicate St. Jude Cloud file names. Assumes files are ann
 
 Usage: `dx ls /counts | python3 deduplicate.py | bash`
 
-### `gtf_to_rseqc_bed` 
+### `gtf-to-rseqc-bed` 
 
 A utility script for converting Gencode GTFs into the custom BED12 format used by the [RSeQC software package](http://rseqc.sourceforge.net/).
 
