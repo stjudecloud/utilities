@@ -22,7 +22,7 @@ Usage: `dx ls /counts | deduplicate-feature-counts | bash`
 
 A utility script for converting Gencode GTFs into the custom BED12 format used by the [RSeQC software package](http://rseqc.sourceforge.net/).
 
-Usage: `python3 gtf_to_RSeQC_bed.py <gencode gtf> > gencode.vFOO.bed`
+Usage: `gtf-to-rseqc-bed <gencode gtf> > gencode.vFOO.bed`
 
 ## Tests
 
