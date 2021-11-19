@@ -12,10 +12,11 @@ packages = [
 python = "^3.8"
 
 [tool.poetry.dev-dependencies]
+pdoc3 = "^0.10.0"
 
 [tool.poetry.scripts]
-deduplicate-samples = 'src.deduplicate_samples:main'
-gtf-to-rseqc-bed = "src.gtf_to_rseqc_bed:main"
+deduplicate-samples = "stjudecloud-utilities.deduplicate_samples:main"
+gtf-to-rseqc-bed = "stjudecloud-utilities.gtf_to_rseqc_bed:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
