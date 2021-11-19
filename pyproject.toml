@@ -15,7 +15,7 @@ python = "^3.8"
 pdoc3 = "^0.10.0"
 
 [tool.poetry.scripts]
-deduplicate-samples = "stjudecloud-utilities.deduplicate_samples:main"
+deduplicate-feature-counts = "stjudecloud-utilities.deduplicate_feature_counts:main"
 gtf-to-rseqc-bed = "stjudecloud-utilities.gtf_to_rseqc_bed:main"
 
 [build-system]

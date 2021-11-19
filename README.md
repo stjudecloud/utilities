@@ -12,11 +12,11 @@ pip install stjudecloud-utilities
 
 The following scripts are included in the package:
 
-### `deduplicate-samples`
+### `deduplicate-feature-counts`
 
 A utility script to deduplicate St. Jude Cloud file names. Assumes files are annotated with St. Jude project names. Retains files based on the `PRIORITIES` list of prioritized projects.
 
-Usage: `dx ls /counts | python3 deduplicate.py | bash`
+Usage: `dx ls /counts | deduplicate-feature-counts | bash`
 
 ### `gtf-to-rseqc-bed` 
 
