@@ -133,7 +133,7 @@ def main():
         if ":" not in line:
             continue
 
-        fn, fid = [s.strip() for s in line.split(" : ")]
+        fn, fid = [s.strip() for s in line.split(":")]
         store[fn].append(fid)
 
     print(f"dx mkdir {BAD_FILES_FOLDER}")
