@@ -127,14 +127,13 @@ def main():
         description="Deduplicates samples in DNAnexus based on the project priority " + \
              "the St. Jude Cloud team uses."
     )
-    parser.add_argument("dxids", nargs="+", type=str, help="DNAnexus file ids to deduplicate")
     args = parser.parse_args()
 
-    for line in [l.strip() for l in args.dxids]:
+    for line in [l.strip() for l in sys.stdin]:
         if ":" not in line:
             continue
 
-        fn, fid = [s.strip() for s in line.split(":")]
+        fn, fid = [s.strip() for s in line.split(" : ")]
         store[fn].append(fid)
 
     print(f"dx mkdir {BAD_FILES_FOLDER}")
