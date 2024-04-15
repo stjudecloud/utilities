@@ -133,7 +133,7 @@ def get_best_file(
 def main():
     parser = argparse.ArgumentParser(
         description="Deduplicates samples in DNAnexus based on the project priority " + \
-             "the St. Jude Cloud team uses."
+            "the St. Jude Cloud team uses."
     )
     parser.add_argument("dxids", nargs="+", type=str, help="DNAnexus file ids to deduplicate")
     args = parser.parse_args()
