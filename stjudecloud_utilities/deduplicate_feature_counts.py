@@ -14,7 +14,7 @@ BAD_FILES_FOLDER = "/bad-files/"
 PRIORITIES = [
     "Clinical Pilot",
     "Pediatric Cancer Genome Project (PCGP)",
-    "Real Time Clinical Genomics (RTCG)",
+    "Real-time Clinical Genomics (RTCG)",
     "Genomes 4 Kids (G4K)",
     "Childhood Solid Tumor Network (CSTN)",
     "Pan-Acute Lymphoblastic Leukemia (PanALL)",
