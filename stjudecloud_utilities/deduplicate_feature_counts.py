@@ -11,6 +11,8 @@ store = defaultdict(list)
 
 LOG = False
 BAD_FILES_FOLDER = "/bad-files/"
+# This list of priorities needs to be updated as new datasets are released.
+# The list of datasets can be found from the databrowser, looking at datasets with counts data.
 PRIORITIES = [
     "Clinical Pilot",
     "Pediatric Cancer Genome Project (PCGP)",
@@ -22,6 +24,12 @@ PRIORITIES = [
     "Pediatric Brain Tumor Program (PBTP)",
     "Pediatric Acute Myeloid Leukemia (PedAML)",
     "Genomics and transcriptomics of relapsed pediatric AML (RPAML)",
+    "Landscape of Pediatric Acute Myeloid Leukemia (PanpAML)",
+    "Atypical teratoid/rhabdoid tumor-derived tumoroid models (ATRT_TM)",
+    "Medulloblastoma Preclinical Ribociclib and Paxalisib (MBPRP)",
+    "Medulloblastoma Preclinical Ribociclib and Gemcitabine (MBPRG)",
+    "Pediatric Acute Myeloid Leukemia (PedAML)",
+    "CICERO Benchmark",
 ]
 
 
@@ -125,7 +133,7 @@ def get_best_file(
 def main():
     parser = argparse.ArgumentParser(
         description="Deduplicates samples in DNAnexus based on the project priority " + \
-             "the St. Jude Cloud team uses."
+            "the St. Jude Cloud team uses."
     )
     args = parser.parse_args()
 
